@@ -4,12 +4,10 @@ const hamburger = document.querySelector(".hamburger");
 const nav = document.querySelector(".header .navbar");
 const navItem = document.querySelectorAll(".header .navbar #a");
 
-document.addEventListener("DOMContentLoaded", init);
+const homeBtn = document.getElementsByClassName(".position-fixed-btn");
 
-function init() {
-  let querry = window.matchMedia("(max-width: 768px)");
-
-  if (querry.matches) {
+window.addEventListener("load", () => {
+  if (window.matchMedia("(max-width: 768px)")) {
     hamburger.addEventListener("click", () => {
       nav.classList.toggle("active");
     });
@@ -20,7 +18,7 @@ function init() {
     });
   } else {
   }
-}
+});
 
 allLi.forEach((item) => {
   item.addEventListener("click", () => {
@@ -30,12 +28,4 @@ allLi.forEach((item) => {
 
     item.classList.add("active-selector");
   });
-});
-
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
-    homeBtn.classList.add("btn-active2");
-  } else {
-    homeBtn.classList.remove("btn-active2");
-  }
 });
