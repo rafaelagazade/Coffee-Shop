@@ -1,3 +1,3 @@
 Project Online Preview
 
-https://coffee-shop-ecru.vercel.app/
+https://coffee-shop-ten-nu.vercel.app/
