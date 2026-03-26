@@ -414,8 +414,8 @@
 </button>
 
 <div id="cs-window">
-  <!-- Yalnız mobil görünüşdə göstərilən üst bağlama düyməsi -->
-  <button id="cs-mobile-close" onclick="csToggle()" aria-label="Chatı bağla">
+  <!-- Mobil üçün yuxarıdakı X düyməsi -->
+  <button id="cs-mobile-close" onclick="csToggle()" aria-label="Bağla">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round">
       <line x1="18" y1="6" x2="6" y2="18"/>
       <line x1="6" y1="6" x2="18" y2="18"/>
@@ -499,35 +499,44 @@
 #cs-send:hover:not(:disabled){transform:scale(1.08)}
 #cs-send:disabled{opacity:.5;cursor:not-allowed}
 
-/* Mobil bağlama düyməsi — yalnız responsiv seqmentdə görünür */
-#cs-mobile-close{display:none}
+/* --- RESPONSİV DÜZƏLİŞ --- */
+#cs-mobile-close { display: none; }
 
-@media(max-width:480px){
-  #cs-window{width:100vw;height:100dvh;bottom:0;right:0;border-radius:0}
-  /* Masaüstündə görünən bubble-ı gizlət, çünki mobil bağlama düyməsi işləyir */
-  #cs-bubble{bottom:20px;right:20px}
-  /* Mobil üst bağlama düyməsi */
-  #cs-mobile-close{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:absolute;
-    top:12px;
-    right:14px;
-    width:36px;
-    height:36px;
-    background:rgba(255,255,255,.1);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
-    cursor:pointer;
-    z-index:10001;
-    flex-shrink:0;
-    transition:background .15s;
+@media(max-width:480px) {
+  /* Chat açıq olduqda köhnə dairəvi düyməni tamamilə gizlət */
+  #cs-bubble.open { display: none !important; }
+  
+  #cs-window {
+    width: 100vw;
+    height: 100dvh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    position: fixed;
+    overflow: visible;
   }
-  #cs-mobile-close:hover{background:rgba(255,255,255,.2)}
-  /* Mobil görünüşdə cs-window relative olsun ki, absolute düymə düzgün yerləşsin */
-  #cs-window{position:fixed;overflow:visible}
-  #cs-header{padding-right:58px}
+
+  /* Mobil üçün yeni X düyməsi */
+  #cs-mobile-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10002;
+    transition: background 0.2s;
+  }
+  #cs-mobile-close:active { background: rgba(255, 255, 255, 0.3); }
+
+  /* Header padding-i artırırıq ki, yazı X düyməsinin altında qalmasın */
+  #cs-header { padding-right: 60px; }
 }
 </style>
 
